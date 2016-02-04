@@ -1,4 +1,6 @@
-
+---
+title: Document Center
+---
 # ![avatar][] Benedikt Kristinsson
 
 ---
