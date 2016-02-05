@@ -19,7 +19,7 @@ the a server and a client. The first clients need some way to find
 each other, and recognize itself in the event it tried to connect to
 it self.
 
-# UUID to identify peers
+### UUID to identify peers
 
 Since outgoing TCP connections are assigned random ports, we cannot
 rely on `ip:port` as identifies for instances of the p2p network. We
@@ -32,7 +32,7 @@ is 128 bits, seems like a reasonably small overhead.
 'a46de8d6-177e-4644-a711-63d182fdbade'
 {% endhighlight %}
 
-# Defining a simple protocol in Twisted
+### Defining a simple protocol in Twisted
 
 We will only talk about Twisted to the extent that is nessacary to
 build this. For more information on how to build servers and protocols
@@ -128,7 +128,7 @@ class MyProtocol(Protocol):
 This will be capable of sending and reading a `hello` message, and
 keep track of connected peers.
 
-# Talking to the protocol
+### Talking to the protocol
 
 So now we have something that looks like a "server" thats able to
 handle a `hello` message. We need to make this also act as a
@@ -148,7 +148,7 @@ d = connectProtocol(point, MyProtocol())
 d.addCallback(gotProtocol)
 {% endhighlight %}
 
-# Bootstrapping the network
+### Bootstrapping the network
 
 If we run both of those parts, a succesful handshake will hopefully be
 performed and the listening factory will output something like
@@ -179,7 +179,7 @@ reactor.run()
 And now we can bootstrap a network with a couple of different
 instances of our program.
 
-# Ping
+### Ping
 
 Let's make them do something useful and add a `ping` message, with an
 empty payload. We also need a `pong` message for the response. 
@@ -258,7 +258,7 @@ class MyProtocol(Protocol):
    
    def handle_pong(self, pong):
         print "Got pong from", self.remote_nodeid
-        # Update the timestamp
+        ###Update the timestamp
         self.lastping = time()
         
     def handle_hello(self, hello):
@@ -275,7 +275,7 @@ class MyProtocol(Protocol):
 Now we have a bootstrapped peer-to-peer network where the peers ping
 each other every minute. But it can only find other nodes by bootstrapping.
 
-# Discovering nodes
+### Discovering nodes
 
 The current version just has the ability to connect to a list of
 predefined nodes. We need to add som extra functionality to turn it
@@ -334,8 +334,8 @@ class MyProtocol(Protocol):
                 self.handle_getaddr()
             
 
-    # The methods for ping and pong remain unchanged and are omitted
-    # for brevity
+    ###The methods for ping and pong remain unchanged and are omitted
+    ###for brevity
 
     def send_addr(self, mine=False):
         now = time()
@@ -380,13 +380,13 @@ class MyProtocol(Protocol):
         else:
             self.factory.peers[self.remote_nodeid] = self
             self.lc_ping.start(60)
-            # inform our new peer about us
+            ###inform our new peer about us
             self.send_addr(mine=True)
-            # and ask them for more peers
+            ###and ask them for more peers
             self.send_getaddr()
 {% endhighlight %}
 
-# Summary
+### Summary
 
 And now we have a simple p2p network capable of the following
 
