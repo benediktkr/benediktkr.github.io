@@ -99,7 +99,7 @@ boot relatively seldom, we specify `--iter-time 6000` to determine the
 number of iterations needed for the server to spend 6 seconds on the
 key derivation function.
 
-    # cryptsetup --cipher aes-xts-plain64 -s 256 --iter-time 6000 luksFormat /dev/md1
+    # cryptsetup luksFormat --cipher aes-xts-plain64 -s 256 --iter-time 6000 /dev/md1
     # cryptsetup luksDump /dev/md1
     # cryptsetup luksOpen /dev/md1 cryptroot
     # ls /dev/mapper/cryptroot
