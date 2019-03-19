@@ -73,7 +73,7 @@ this as soon after install as possible, because we will have to keep
 the current OS setup in memeory while encrypting the disks.
 
     localhost:~$ ssh -o "UserKnownHostsFile=~/.ssh/known_hosts.rescue" root@server
-    root@server's password: 
+    root@server's password:
     root@rescue ~ #
 
 Before encrypting the drives, we need to copy our old installation
@@ -140,11 +140,10 @@ Before we can change root into our system we need the special filesystems. We ne
 
 We need a crypttab to be able to boot from the encrypted filesystem. Since we installed LVM from the image, we can leave the fstab as-is.
 
-`/etc/crypttab`:
-    # <target name> <source device>         <key file>      <options>
+    # cat/etc/crypttab
     cryptroot /dev/md1 none luks
 
-`/etc/fstab:`
+    cat /etc/fstab
     proc           /proc   proc defaults 0 0
     /dev/md/0      /boot   ext3 defaults 0 0
     /dev/vg0/root  /       ext4  defaults 0 0
