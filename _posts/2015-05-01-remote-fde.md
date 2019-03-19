@@ -143,7 +143,7 @@ We need a crypttab to be able to boot from the encrypted filesystem. Since we in
     # cat/etc/crypttab
     cryptroot /dev/md1 none luks
 
-    cat /etc/fstab
+    # cat /etc/fstab
     proc           /proc   proc defaults 0 0
     /dev/md/0      /boot   ext3 defaults 0 0
     /dev/vg0/root  /       ext4  defaults 0 0
