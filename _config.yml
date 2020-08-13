@@ -9,10 +9,11 @@
 title: benediktkr.github.io
 email: benedikt@inventati.org
 description: > # this means to ignore newlines until "baseurl:"
-  Security Engineer and DevOps. 
+  Security Engineer and DevOps.
 url: "https://benediktkr.github.io/" # the base hostname & protocol for your site
 twitter_username: benediktkr
 github_username:  benediktkr
 
 # Build settings
 markdown: kramdown
+theme: jekyll-theme-midnight
